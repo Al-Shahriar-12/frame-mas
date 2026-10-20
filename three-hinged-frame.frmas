@@ -1,0 +1,302 @@
+{
+  "format": "MAS",
+  "app": "frame",
+  "appName": "Frame MAS",
+  "studio": "MAS Studio",
+  "kind": "frame2d",
+  "schema": 1,
+  "savedAt": "2026-10-20T08:53:29.178Z",
+  "units": {
+    "base": "SI-kN-m",
+    "length": "m",
+    "force": "kN",
+    "moment": "kN*m",
+    "distributedLoad": "kN/m",
+    "modulus": "GPa",
+    "sectionDimensions": "mm",
+    "customInertia": "1e6 mm^4",
+    "density": "kg/m^3",
+    "display": "kN-m"
+  },
+  "project": {
+    "title": "Three-hinged frame"
+  },
+  "model": {
+    "grid": {
+      "xs": [
+        {
+          "label": "A",
+          "x": 0
+        },
+        {
+          "label": "B",
+          "x": 5
+        },
+        {
+          "label": "C",
+          "x": 10
+        }
+      ],
+      "ys": [
+        {
+          "label": "Base",
+          "y": 0
+        },
+        {
+          "label": "Top",
+          "y": 5
+        }
+      ],
+      "snap": 0.5
+    },
+    "materials": [
+      {
+        "id": "mat1",
+        "name": "Structural steel",
+        "E": 200,
+        "nu": 0.3,
+        "rho": 7850
+      }
+    ],
+    "sections": [
+      {
+        "type": "I",
+        "d": 350,
+        "bf": 180,
+        "tf": 12,
+        "tw": 8,
+        "b": 300,
+        "h": 500,
+        "D": 273,
+        "t": 10,
+        "A": 8000,
+        "Iz": 150,
+        "Iy": 10,
+        "J": 0.5,
+        "depth": 350,
+        "width": 180,
+        "id": "sec1",
+        "name": "Column",
+        "material": "mat1"
+      },
+      {
+        "type": "I",
+        "d": 400,
+        "bf": 180,
+        "tf": 13,
+        "tw": 8,
+        "b": 300,
+        "h": 500,
+        "D": 273,
+        "t": 10,
+        "A": 8000,
+        "Iz": 150,
+        "Iy": 10,
+        "J": 0.5,
+        "depth": 350,
+        "width": 180,
+        "id": "sec2",
+        "name": "Beam",
+        "material": "mat1"
+      }
+    ],
+    "nodes": [
+      {
+        "id": 1,
+        "x": 0,
+        "y": 0,
+        "support": "pin"
+      },
+      {
+        "id": 2,
+        "x": 0,
+        "y": 5,
+        "support": "free"
+      },
+      {
+        "id": 3,
+        "x": 5,
+        "y": 5,
+        "support": "free"
+      },
+      {
+        "id": 4,
+        "x": 10,
+        "y": 5,
+        "support": "free"
+      },
+      {
+        "id": 5,
+        "x": 10,
+        "y": 0,
+        "support": "pin"
+      }
+    ],
+    "members": [
+      {
+        "releaseI": false,
+        "releaseJ": false,
+        "truss": false,
+        "id": 1,
+        "i": 1,
+        "j": 2,
+        "section": "sec1"
+      },
+      {
+        "releaseI": false,
+        "releaseJ": true,
+        "truss": false,
+        "id": 2,
+        "i": 2,
+        "j": 3,
+        "section": "sec2"
+      },
+      {
+        "releaseI": false,
+        "releaseJ": false,
+        "truss": false,
+        "id": 3,
+        "i": 3,
+        "j": 4,
+        "section": "sec2"
+      },
+      {
+        "releaseI": false,
+        "releaseJ": false,
+        "truss": false,
+        "id": 4,
+        "i": 5,
+        "j": 4,
+        "section": "sec1"
+      }
+    ],
+    "loads": [
+      {
+        "x1": 0,
+        "x2": 0,
+        "P": 0,
+        "a": 0,
+        "w1": 12,
+        "w2": 12,
+        "id": 1,
+        "case": "D",
+        "on": "member",
+        "member": 2,
+        "type": "dist",
+        "dir": "gravity",
+        "full": true
+      },
+      {
+        "x1": 0,
+        "x2": 0,
+        "P": 0,
+        "a": 0,
+        "w1": 12,
+        "w2": 12,
+        "id": 2,
+        "case": "D",
+        "on": "member",
+        "member": 3,
+        "type": "dist",
+        "dir": "gravity",
+        "full": true
+      },
+      {
+        "x1": 0,
+        "x2": 0,
+        "P": 40,
+        "a": 2.5,
+        "w1": 0,
+        "w2": 0,
+        "id": 3,
+        "case": "L",
+        "on": "member",
+        "member": 3,
+        "type": "point",
+        "dir": "gravity",
+        "full": true
+      },
+      {
+        "x1": 0,
+        "x2": 0,
+        "P": 0,
+        "a": 0,
+        "w1": 0,
+        "w2": 0,
+        "id": 4,
+        "case": "W",
+        "on": "node",
+        "node": 2,
+        "Fx": 15,
+        "Fy": 0,
+        "Mz": 0
+      }
+    ],
+    "cases": [
+      {
+        "id": "D",
+        "name": "Dead",
+        "type": "dead",
+        "selfWeight": true
+      },
+      {
+        "id": "L",
+        "name": "Live",
+        "type": "live",
+        "selfWeight": false
+      },
+      {
+        "id": "W",
+        "name": "Wind",
+        "type": "wind",
+        "selfWeight": false
+      }
+    ],
+    "combos": [
+      {
+        "id": "c1",
+        "name": "1.4D",
+        "factors": {
+          "D": 1.4
+        }
+      },
+      {
+        "id": "c2",
+        "name": "1.2D + 1.6L",
+        "factors": {
+          "D": 1.2,
+          "L": 1.6
+        }
+      },
+      {
+        "id": "c3",
+        "name": "1.2D + 1.6W + 1.0L",
+        "factors": {
+          "D": 1.2,
+          "W": 1.6,
+          "L": 1
+        }
+      },
+      {
+        "id": "c4",
+        "name": "0.9D + 1.6W",
+        "factors": {
+          "D": 0.9,
+          "W": 1.6
+        }
+      },
+      {
+        "id": "c5",
+        "name": "D + L (service)",
+        "factors": {
+          "D": 1,
+          "L": 1
+        }
+      }
+    ]
+  },
+  "settings": {
+    "resultKey": "case:D",
+    "display": "model"
+  }
+}

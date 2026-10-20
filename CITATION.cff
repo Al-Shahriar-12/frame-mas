@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If Frame MAS helped your study or work, please cite it as below."
+title: "Frame MAS: 2D Frame and Truss Analysis for Engineering Students"
+type: software
+authors:
+  - given-names: "MD"
+    family-names: "Al Shahriar"
+    affiliation: "Bangladesh University of Engineering and Technology (BUET)"
+version: "1.0.0"
+date-released: "2026-10-20"
+license: MIT
+repository-code: "https://github.com/Al-Shahriar-12/frame-mas"
+url: "https://al-shahriar-12.github.io/frame-mas/"
+abstract: "Free, open-source plane frame and truss analysis in the browser: ETABS-style grids, rigid and hinged joints, load cases with BNBC 2020 and ASCE 7-16 design combinations and envelopes, exact axial force, shear and bending moment values, deflections, reactions and a 3D view, in SI and US units."
+keywords:
+  - frame analysis
+  - truss analysis
+  - structural analysis
+  - stiffness method
+  - load combinations
+  - BNBC 2020
+  - bending moment diagram
+  - civil engineering
+  - engineering education
